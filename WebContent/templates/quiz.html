@@ -1,0 +1,78 @@
+<div id="quiz">
+
+  <!-- Selection Section -->
+  <div class="header">
+    <div class="row">
+        <!-- div class="col-md-8">
+            <h2>Quiz Application</h2>
+        </div-->
+        <div class="col-md-4 header-left">
+            <!-- In actual application, you may wish to load the quiz List using angular service. -->
+            Select Quiz: 
+            <select id="quizList" ng-model="quizName" ng-change="loadQuiz(quizName)">
+                <option value="data/aspnet.json">Asp.Net</option>
+                <option value="data/csharp.json">C Sharp</option>
+                <option value="data/designPatterns.json">Design Patterns</option>
+            </select>
+        </div>
+    </div>
+    <hr />
+  </div>
+  
+  <div >
+    <h1 class="center">{{quiz.name}}</h1>
+    <hr />
+    <div ng-show="mode=='quiz'" class="text-left">
+    	<div class="label label-warning" ng-if="activeQuestion >= 0">Question {{currentPage}} of {{totalQuestions}} | Correct : {{score}} </div>
+		<!-- div class="progress">
+			<div
+				class=" {{ ($index === activeQuestion) ? 'on':'off' }} {{ (myQuestion.questionState === 'answered') ? 'answered' :'unanswered' }} {{ (myQuestion.correctness === 'correct') ? 'correct' : 'incorrect'}}"
+				ng-repeat="myQuestion in questions"></div>
+		</div-->
+
+		<div class="intro {{ (activeQuestion > -1) ? 'inactive' : 'active'}}">
+			<h2>Welcome</h2>
+			<p>Click to begin to Start Meelo Evaru Kotiswarudu quiz.</p>
+			<p class="btn" ng-click="activeQuestion = 0">Begin</p>
+		</div>
+
+
+		<div class="question  {{ ($index === activeQuestion) ? 'active' : 'inactive' }} {{ (myQuestion.questionState === 'answered') ? 'answered' : 'unanswered' }}	 {{ (myQuestion.correctness === correct) ? 'correct' : 'incorrect' }} " 				
+				ng-repeat="myQuestion in questions">
+				<p class="txt"> {{currentPage}}. <span ng-bind-html="myQuestion.Name"></span></p>
+				<p class="ans" 
+					ng-class="{ image:Answer.image, 
+					selected:isSelected($parent.$index,$index), 
+					correct:isCorrect($parent.$index,$index)
+					}"
+					ng-style={'background-image':'url({{Answer.image}})'}
+					ng-click="selectAnswer($parent.$index,$index)" 
+					ng-repeat="option in questions[$index].Options">{{option.Name}}				
+				</p>
+				
+				<div class="feedback">
+					<p ng-show="myQuestion.correctness === 'correct'">You are <strong>Correct</strong></p>
+					<p ng-show="myQuestion.correctness === 'incorrect'">Oops! That is not correct</p>
+					<p>{{myQuestion.feedback}}</p>
+					<div class="btn" ng-click="selectContinue()">Continue</div>				
+				</div>							
+			</div>
+
+		<div class="results {{ (totalQuestions === activeQuestion) ? 'active' : 'inactive'}}">
+			<h3>Results</h3>
+			<p>You Scored {{percentage}}% by correctly answering {{score}} of
+				the total {{totalQuestions}} questions.</p>
+			<p>Use the links below to challenge your friends.</p>
+			<div class="share" ng-bind-html="createShareLinks(percentage)"></div>
+		</div>
+
+
+	</div>
+
+
+</div>
+  
+  
+  
+
+</div>

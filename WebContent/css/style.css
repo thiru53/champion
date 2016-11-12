@@ -1,0 +1,60 @@
+.navbar {
+	margin-bottom: 0;
+	background-color: #1013E4;
+	z-index: 9999;
+	border: -1px;
+	font-size: 12px !important;
+	line-height: 1.42857143 !important;
+	border-color: #E60E0E;
+	border-radius: 0;
+	font-family: Montserrat, sans-serif;
+}
+
+.navbar li a,.navbar .navbar-brand {
+	color: #fff !important;
+}
+
+.navbar-nav li a:hover,.navbar-nav li.active a {
+	color: #f4511e !important;
+	background-color: #fff !important;
+}
+
+.navbar-default .navbar-toggle {
+	border-color: transparent;
+	color: #fff !important;
+}
+
+.container-fluid {
+	margin-top: 60px;
+}
+
+.container-fluid {
+	padding-right: 15px;
+	padding-left: 15px;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+.row.content {
+	height: 450px;
+}
+
+/* Set gray background color and 100% height */
+.sidenav {
+	padding-top: 60px;
+	background-color: #f1f1f1;
+	height: 121%;
+	padding-right: 20px;
+    padding-left: 20px;
+}
+
+#contact {
+	text-align: left;
+}
+#contact hr, #about hr{
+	margin: 0px 0px 10px 0px;
+}
+.col-sm-8 {
+	padding-right: 5px;
+	padding-left: 5px;
+}
